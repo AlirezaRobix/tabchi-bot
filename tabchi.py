@@ -38,7 +38,7 @@ def lists(c,m):
     else:
         app.send_message(m.chat.id, "**Bots:\n"+"\n".join(botlists)+"**")
 
-@app.on_message(Filters.group & Filters.command("clear",prefixes=""))
+@app.on_message((Filters.group | Filters.private) & Filters.command("clear",prefixes=""))
 def clears(c,m):
     botlists.clear()
     app.send_message(m.chat.id, "**Bot List Successfuly Cleared!**")
